@@ -155,7 +155,7 @@ function syncAutoUI() {
 
 function syncStartMeta() {
     if (!startMeta) return;
-    if (!fwIsValid) { startMeta.textContent = 'System incompatible'; return; }
+    if (!fwIsValid) { startMeta.textContent = (window.firmware && window.firmware.rejection && window.firmware.rejection()) || 'System incompatible'; return; }
     if (!payloads.length) { startMeta.textContent = 'Waiting for manifest...'; return; }
 
     const count = activePayloadIndices.length;
