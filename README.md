@@ -135,3 +135,13 @@ This project is built upon the foundational research, tools, and relentless dedi
 **ntfargo, ufm42, Sonic\_Iso, Jordy, Dr. Yenyen, TheFlow, SlidyBat, Flatz, cow, nhk, bollarz, Sleirsgoevy, EchoStretch,** and **EarthOnion**.
 
 Also thanks **0xp0co** (aydencharles) for OnionHEN.
+
+Contributing
+-------
+Contributions are welcome, provided they bring meaningful improvements to the project.
+
+Pull requests are reviewed manually. Submissions that are low-effort, AI-generated without meaningful review, unrelated to the project's goals, or otherwise of insufficient quality may be rejected.
+
+If you redistribute this project or publish a derivative work, comply with the GPL-3.0 license and preserve applicable copyright and license notices. Credit the original project and link to the upstream repository where reasonably possible.
+
+By submitting a contribution, you agree that your contribution is provided under the project's GPL-3.0 license.
