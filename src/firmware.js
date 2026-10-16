@@ -9,25 +9,33 @@ const supportedFirmware = [
   "8.60", "8.40", "8.20", "8.00",
   "7.61", "7.60", "7.40", "7.20", "7.01", "7.00",
 ];
-const firmwareUserAgent = navigator.userAgent;
-const firmwareMatch = /PlayStation 5\/(\d+\.\d+)/.exec(firmwareUserAgent);
-const firmwareVersion = firmwareMatch ? firmwareMatch[1] : "";
+
+const firmwareUserAgent = navigator.userAgent || "";
+
+function detectFirmware(ua) {
+  let m = /PlayStation 5\/(\d+\.\d+)/.exec(ua);
+  if (m) return m[1];
+  // Some builds embed the retail FW in the long version string
+  m = /\b(1[0-3]\.\d{2}|[7-9]\.\d{2})\b/.exec(ua);
+  if (m && supportedFirmware.includes(m[1])) return m[1];
+  return "";
+}
+
+const firmwareVersion = detectFirmware(firmwareUserAgent);
 
 window.fw_str = firmwareVersion;
+window.fw_ua = firmwareUserAgent;
 window.firmware = {
   rejection() {
-    if (!firmwareUserAgent.includes("PlayStation 5")) {
+    if (!/PlayStation\s*5/i.test(firmwareUserAgent)) {
       return "PlayStation 5 Required";
     }
-
     if (!firmwareVersion) {
-      return "FW version not found";
+      return "FW version not found in UA";
     }
-
     if (!supportedFirmware.includes(firmwareVersion)) {
-      return `FW ${firmwareVersion} is not supported`;
+      return "FW " + firmwareVersion + " is not supported";
     }
-
     return null;
   },
 };
