@@ -28,7 +28,7 @@ window.fw_ua = firmwareUserAgent;
 window.firmware = {
   rejection() {
     if (!/PlayStation\s*5/i.test(firmwareUserAgent)) {
-      return "PlayStation 5 Required (UA missing)";
+      return "PlayStation 5 Required";
     }
     if (!firmwareVersion) {
       return "FW version not found in UA";
